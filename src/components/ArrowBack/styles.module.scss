@@ -1,0 +1,19 @@
+.container {
+  position: absolute;
+  top: 40px;
+  left: 50px;
+
+  svg {
+    color: #FFFFFF;
+    font-size: 50px;
+    cursor: pointer;
+    transform: scale(0.8);
+    transition: all .2s;
+
+    &:hover {
+      transform: scale(1)
+    }
+  }
+
+
+}

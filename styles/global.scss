@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&family=Montserrat:wght@400;700&family=Roboto&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+html {
+  font-size: 62.5%; //O valor do fontSize padrao passa a ser 10px, entao 1 rem passa a ser 10px;
+}
+
+.container {
+  position: relative;
+  background: url("/images/sky.png") no-repeat;
+  background-size: cover;
+  background-position: 100% 100%;
+  width: 100vw;
+  height: 100vh;
+
+}

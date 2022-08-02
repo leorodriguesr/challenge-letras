@@ -1,0 +1,29 @@
+.container {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 15px;
+
+  .images {
+    display: flex;
+    gap: 12px
+  }
+
+  p{
+    font-size: 1rem;
+    margin-top: 3px;
+    letter-spacing: 0.1rem;
+  }
+
+  img {
+    cursor: pointer;
+  }
+  
+}
+
+
