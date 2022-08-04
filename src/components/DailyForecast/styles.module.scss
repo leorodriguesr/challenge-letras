@@ -30,6 +30,10 @@
       align-items: center;
       gap: 30px;
 
+      .date {
+        width: 122px;
+      }
+
       .line {
         background: linear-gradient(
           90deg,
@@ -75,19 +79,20 @@
 @media (max-width: 707px) {
   .container {
     header {
-      font-size: 3.5rem
-
-      p {
+      font-size: 3.5rem p {
         font-size: 1.8rem;
       }
     }
 
-    
     .dataMap {
       .itemMap {
         display: flex;
         align-items: center;
         gap: 20px;
+
+        .date {
+          width: 80px;
+        }
 
         p {
           font-size: 1.4rem;
@@ -107,15 +112,17 @@
 @media (max-width: 550px) {
   .container {
     header {
-
       p {
         font-size: 1.6rem;
       }
     }
 
-    
     .dataMap {
       .itemMap {
+        .date {
+          width: 70px;
+        }
+
         p {
           font-size: 1rem;
         }
@@ -134,21 +141,25 @@
 @media (max-width: 470px) {
   .container {
     header {
-
       p {
         font-size: 1.4rem;
       }
     }
-    
+
     .dataMap {
       .itemMap {
         display: flex;
         align-items: center;
         gap: 10px;
 
+        .date {
+          width: 70px;
+        }
+
         p {
           font-size: 1rem;
         }
+
         span {
           font-size: 1rem;
         }
@@ -161,18 +172,22 @@
   }
 }
 
-@media (max-width: 475px) {
+@media (max-width: 375px) {
   .container {
-    
     .dataMap {
       .itemMap {
         display: flex;
         align-items: center;
         gap: 4px;
 
+        .date {
+          width: 60px;
+        }
+
         p {
           font-size: 1rem;
         }
+
         span {
           font-size: 1rem;
         }

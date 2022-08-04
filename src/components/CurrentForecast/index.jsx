@@ -1,14 +1,21 @@
-import styles from "./styles.module.scss";
 import { useContext, useEffect, useState } from "react";
-import axios from "axios";
 import Image from "next/image";
+import axios from "axios";
+
 import DailyWeather from "../DailyWeather";
 import { WeatherType } from "../../pages/_app";
+import { Loader } from "../Loader";
 
-export const CurrentForecast = ({ coordinates, activeDaily, setActiveDaily }) => {
+import styles from "./styles.module.scss";
+
+export const CurrentForecast = ({
+  coordinates,
+  activeDaily,
+  setActiveDaily,
+}) => {
   const [data, setData] = useState({});
   const isCelsius = useContext(WeatherType);
-
+  const [removeLoader, setRemoveLoader] = useState(false);
 
   useEffect(() => {
     axios
@@ -17,6 +24,7 @@ export const CurrentForecast = ({ coordinates, activeDaily, setActiveDaily }) =>
       )
       .then((res) => {
         setData(res.data);
+        setRemoveLoader(true);
       });
   }, [coordinates]);
   // console.log(data);
@@ -24,12 +32,14 @@ export const CurrentForecast = ({ coordinates, activeDaily, setActiveDaily }) =>
   const convertTemp = (value) => {
     return parseInt((value - 32) / 1.8);
   };
-  
 
   if (activeDaily) {
-    return <DailyWeather coordinates={coordinates} />
+    return <DailyWeather coordinates={coordinates} />;
   }
 
+  if (!removeLoader) {
+    return <Loader />;
+  }
   return (
     <div className={styles.container}>
       <header>
@@ -38,12 +48,46 @@ export const CurrentForecast = ({ coordinates, activeDaily, setActiveDaily }) =>
       </header>
       <main>
         <div className={styles.currentTemp}>
-          {data.main ? <span>{isCelsius? convertTemp(data.main.temp) : parseInt(data.main.temp)}°</span> : null}
-          {data.weather ? <Image src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`} width={99.69} height={100} alt="img" /> : null}
+          {data.main ? (
+            <span>
+              {isCelsius
+                ? convertTemp(data.main.temp)
+                : parseInt(data.main.temp)}
+              °
+            </span>
+          ) : null}
+          {data.weather ? (
+            <Image
+              src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
+              width={99.69}
+              height={100}
+              alt="img"
+            />
+          ) : null}
         </div>
         <div className={styles.maxMin}>
-          <p>MAX: {data.main ? <span>{isCelsius? convertTemp(data.main.temp_max) : parseInt(data.main.temp_max)}°</span> : null}</p>
-          <p>MIN: {data.main ? <span>{isCelsius? convertTemp(data.main.temp_min) : parseInt(data.main.temp_min)}°</span> : null}</p>
+          <p>
+            MAX:{" "}
+            {data.main ? (
+              <span>
+                {isCelsius
+                  ? convertTemp(data.main.temp_max)
+                  : parseInt(data.main.temp_max)}
+                °
+              </span>
+            ) : null}
+          </p>
+          <p>
+            MIN:{" "}
+            {data.main ? (
+              <span>
+                {isCelsius
+                  ? convertTemp(data.main.temp_min)
+                  : parseInt(data.main.temp_min)}
+                °
+              </span>
+            ) : null}
+          </p>
         </div>
       </main>
       <footer>
@@ -51,10 +95,6 @@ export const CurrentForecast = ({ coordinates, activeDaily, setActiveDaily }) =>
           Ver previsão para os próximos 5 dias
         </a>
       </footer>
-
-
-
     </div>
   );
-
 };

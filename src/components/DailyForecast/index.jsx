@@ -1,12 +1,20 @@
-import styles from "./styles.module.scss";
 import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import Image from "next/image";
+
 import { WeatherType } from "../../pages/_app";
+import { Loader } from "../Loader";
+
+import styles from "./styles.module.scss";
 
 export const DailyForecast = ({ coordinates }) => {
+
   const [data, setData] = useState({});
+  const [removeLoader, setRemoveLoader] = useState(false);
   const isCelsius = useContext(WeatherType);
+  const apiKey = process.env.API_KEY
+
+
 
   useEffect(() => {
     axios
@@ -15,6 +23,7 @@ export const DailyForecast = ({ coordinates }) => {
       )
       .then((res) => {
         setData(res.data);
+        setRemoveLoader(true)
       });
   }, [coordinates]);
   console.log(data);
@@ -202,6 +211,10 @@ export const DailyForecast = ({ coordinates }) => {
     ,
   ];
 
+  if (!removeLoader) {
+    return <Loader />
+  }
+
   return (
     <div className={styles.container}>
       <header>
@@ -211,7 +224,7 @@ export const DailyForecast = ({ coordinates }) => {
       <div className={styles.dataMap}>
         {forecast.map((item, key) => (
           <div key={key} className={styles.itemMap}>
-            <p>{item.date}</p>
+            <p className={styles.date}>{item.date}</p>
             <span>{item.img}</span>
             <div className={styles.maxMin}>
               <span>{item.tempMin}</span>

@@ -11,11 +11,10 @@ body {
 }
 
 html {
-  font-size: 62.5%; //O valor do fontSize padrao passa a ser 10px, entao 1 rem passa a ser 10px;
+  font-size: 62.5%; //O valor do fontSize padrao passa a ser 10px;
 }
 
 .container {
-  // position: relative;
   background: url("/images/sky.png") no-repeat;
   background-size: cover;
   background-position: 100% 100%;
