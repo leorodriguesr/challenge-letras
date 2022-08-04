@@ -14,8 +14,6 @@ export const DailyForecast = ({ coordinates }) => {
   const isCelsius = useContext(WeatherType);
   const apiKey = process.env.API_KEY
 
-
-
   useEffect(() => {
     axios
       .get(
