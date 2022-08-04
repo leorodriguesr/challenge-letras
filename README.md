@@ -58,7 +58,7 @@ Abra seu navegador e digite http://localhost:3000/
 ## Demonstração
 
 <br>
-<p align="center"><img src="https://raw.githubusercontent.com/rbricardo/trusty-challenge/main/public/chatbot.gif"></p>
+<!-- <p align="center"><img src="/public/challengeLetras.gif" /></p> -->
 
 <br>
 <br>
