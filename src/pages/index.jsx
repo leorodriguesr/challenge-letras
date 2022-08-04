@@ -1,4 +1,3 @@
-
 import Head from "next/head";
 import { Search } from "../components/Search";
 import styles from "../../styles/Home.module.scss";
