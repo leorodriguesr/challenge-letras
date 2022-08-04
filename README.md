@@ -58,7 +58,7 @@ Abra seu navegador e digite http://localhost:3000/
 ## Demonstração
 
 <br>
-<p align="center"><img src="/public/challengeLetras.gif" /></p>
+<p align="center"><img src="https://github.com/leorodriguesr/challenge-letras/blob/main/public/challengeLetras.gif" /></p>
 
 <br>
 <br>
